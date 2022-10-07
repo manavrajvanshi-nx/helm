@@ -1,0 +1,38 @@
+replicaCount: 2
+
+podAnnotations: 
+  kubectl.kubernetes.io/default-container: manager
+
+imagePullSecrets: []
+name: ndb-operator
+nameOverride: ""
+fullnameOverride: ""
+
+resources:
+  kubeProxy:
+    limits:
+      cpu: 500m
+      memory: 128Mi
+    requests:
+      cpu: 5m
+      memory: 64Mi
+  controller:
+    limits:
+      cpu: 500m
+      memory: 128Mi
+    requests:
+      cpu: 10m
+      memory: 64Mi
+
+
+image:
+  repository: ghcr.io/nutanix-cloud-native/ndb-operator/controller
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "v0.0.2"
+    
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
