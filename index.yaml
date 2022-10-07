@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  ndb-operator:
+  - apiVersion: v2
+    appVersion: 0.0.2
+    created: "2022-10-07T13:01:44.660287-07:00"
+    description: A Helm chart for Nutanix Database Kubernetes Operator
+    digest: 3ad8fb71a7f66a85f449691f9f7f5edcc06f37e2f44fd35907594673b6e7881e
+    name: ndb-operator
+    type: application
+    urls:
+    - ndb-operator-0.0.1.tgz
+    version: 0.0.1
+generated: "2022-10-07T13:01:44.659318-07:00"
