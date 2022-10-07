@@ -1,14 +1,50 @@
 apiVersion: v1
 entries:
   ndb-operator:
-  - apiVersion: v2
+  - annotations:
+      artifacthub.io/changes: "- kind: added\n  description: Helm Chart\n  links:\n
+        \   - name: GitHub \n      url: https://github.com/nutanix-cloud-native/ndb-operator
+        \  \n"
+      artifacthub.io/containsSecurityUpdates: "false"
+      artifacthub.io/crds: "- kind: Database\n  version: v1alpha1\n  name: Database\n
+        \ displayName: My Kind\n  description: Some nice description    \n"
+      artifacthub.io/crdsExamples: |
+        - apiVersion: ndb.nutanix.com/v1alpha1
+          kind: Database
+          metadata:
+            name: db
+          spec:
+            ndb:
+              clusterId: "Nutanix Cluster Id"
+              credentialSecret : ndb-secret-name
+              server: https://[NDB IP]:8443/era/v0.9
+              skipCertificateVerification: true
+            databaseInstance:
+              databaseInstanceName: "Database Instance Name"
+              databaseNames:
+                - database_one
+                - database_two
+                - database_three
+              credentialSecret: db-instance-secret-name
+              size: 10
+              timezone: "UTC"
+              type: postgres
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/maintainers: "- name: Manav Rajvanshi\n  email: manav.rajvanshi@nutanix.com
+        \n"
+      artifacthub.io/operator: "true"
+      artifacthub.io/operatorCapabilities: Basic Install
+      artifacthub.io/prerelease: "true"
+      artifacthub.io/recommendations: |
+        - url: https://artifacthub.io/packages/helm/artifact-hub/artifact-hub
+    apiVersion: v2
     appVersion: 0.0.2
-    created: "2022-10-07T13:20:28.674684-07:00"
+    created: "2022-10-07T13:44:41.6849-07:00"
     description: A Helm chart for Nutanix Database Kubernetes Operator
-    digest: 3c97227831c47ba3920cece35b3cce1d74e541956d8d990e6b1b4dab86270f4f
+    digest: f245ca7820b43eb0519379095a8bd264ab1fb162378e0d65570167ce2421f895
     name: ndb-operator
     type: application
     urls:
     - ndb-operator-0.0.1.tgz
     version: 0.0.1
-generated: "2022-10-07T13:20:28.674091-07:00"
+generated: "2022-10-07T13:44:41.684172-07:00"
