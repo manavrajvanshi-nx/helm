@@ -22,3 +22,55 @@ version: 0.0.1
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
 appVersion: "0.0.2"
+
+annotations:
+  artifacthub.io/changes: |
+    - kind: added
+      description: Helm Chart
+      links:
+        - name: GitHub 
+          url: https://github.com/nutanix-cloud-native/ndb-operator   
+  artifacthub.io/containsSecurityUpdates: "false"
+  # artifacthub.io/images: |
+  #   - name: img1
+  #     image: repo/img1:1.0.0
+  #   - name: img2
+  #     image: repo/img2:2.0.0
+  #     whitelisted: true    
+  artifacthub.io/crds: |
+    - kind: Database
+      version: v1alpha1
+      name: Database
+      displayName: My Kind
+      description: Some nice description    
+  artifacthub.io/crdsExamples: |
+    - apiVersion: ndb.nutanix.com/v1alpha1
+      kind: Database
+      metadata:
+        name: db
+      spec:
+        ndb:
+          clusterId: "Nutanix Cluster Id"
+          credentialSecret : ndb-secret-name
+          server: https://[NDB IP]:8443/era/v0.9
+          skipCertificateVerification: true
+        databaseInstance:
+          databaseInstanceName: "Database Instance Name"
+          databaseNames:
+            - database_one
+            - database_two
+            - database_three
+          credentialSecret: db-instance-secret-name
+          size: 10
+          timezone: "UTC"
+          type: postgres
+ 
+  artifacthub.io/license: Apache-2.0   
+  artifacthub.io/maintainers: |
+    - name: Manav Rajvanshi
+      email: manav.rajvanshi@nutanix.com 
+  artifacthub.io/operator: "true"
+  artifacthub.io/operatorCapabilities: Basic Install
+  artifacthub.io/prerelease: "true"
+  artifacthub.io/recommendations: |
+    - url: https://artifacthub.io/packages/helm/artifact-hub/artifact-hub
