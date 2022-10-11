@@ -23,11 +23,11 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end}}
-      ##
-      serviceAccountName: {{ include "ndb-operator.fullname" . }}-controller-manager
-      ##
+      serviceAccountName: {{ include "ndb-operator.serviceAccountName" . }}
       securityContext:
-        runAsNonRoot: true
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      # securityContext:
+      #   runAsNonRoot: true
       containers:
         - name: kube-rbac-proxy
           securityContext:
@@ -44,15 +44,17 @@ spec:
             protocol: TCP
           {{- with .Values.resources.kubeProxy }}
           resources:
-            {{- toYaml . | nindent 10 }}
+            {{- toYaml . | nindent 12 }}
           {{- end }}
 
         - name: manager 
           securityContext:
-            ##
-            allowPrivilegeEscalation: false
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          # securityContext:
+          #   ##
+          #   allowPrivilegeEscalation: false
           {{- with .Values.image }}
-          image: {{ .repository }}:{{ .tag }}
+          image: {{ .repository }}:{{ .tag | default $.Chart.AppVersion }}
           imagePullPolicy: {{ .pullPolicy }}
           {{- end }}
           args:
@@ -73,7 +75,7 @@ spec:
             periodSeconds: 10
           {{- with .Values.resources.controller }}
           resources: 
-            {{- toYaml . | nindent 112 }}
+            {{- toYaml . | nindent 12 }}
           {{- end }}
           
       

@@ -8,5 +8,5 @@ roleRef:
   name: {{ include "ndb-operator.fullname" . }}-proxy-role
 subjects:
 - kind: ServiceAccount
-  name: {{ include "ndb-operator.fullname" . }}-controller-manager
+  name: {{ include "ndb-operator.serviceAccountName" . }}
   namespace: {{.Release.Namespace}}
