@@ -107,7 +107,6 @@ The following table lists the configurable parameters of the NDB operator chart 
 | `nameOverride`              | To override the name of the operator chart                       | `""`                                                             |
 | `fullnameOverride`          | To override the full name of the operator chart                  | `""`                                                             |
 | `serviceAccount.name`       | Name of the service account that will be used by the operator    | `ndb-operator-service-account`                                   |
-| `secretName`                | Name of the secret for Nutanix Cloud Provider credentials        | `nutanix-creds`                                                  |
 | `podAnnotations`            | Add annotation to NDB Operator controller pods                   | `kubectl.kubernetes.io/default-container: manager`               |
 | `podSecurityContext`        | Security context for the pod(s) running the operator             | `runAsNonRoot: true`                                             |
 | `securityContext`           | Security context for the container running the controller        | `allowPrivilegeEscalation: false`                                |
@@ -118,6 +117,20 @@ The following table lists the configurable parameters of the NDB operator chart 
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install` or provide a file with `-f value.yaml`.
 
+### Configuration examples:
+
+Install the operator in the `nutanix-operators` namespace:
+
+```console
+helm install ndb-operator nutanix/ndb-operator -n nutanix-operators --set fullnameOverride=my-operator --set replicaCount=2 
+```
+In the above command  `fullnameOverride`, `replicaCount` refers to the variables defined in the values.yaml file. 
+
+All the options can also be specified in a value.yaml file:
+
+```console
+helm install ndb-operator nutanix/ndb-operator -n nutanix-operators -f value.yaml
+```
 ---
 
 ## How it works
