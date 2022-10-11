@@ -3,22 +3,19 @@ The NDB operator brings automated and simplified database administration, provis
 
 ---
 
-## Getting Started
-### Pre-requisites
+## Pre-requisites
 1. NDB [installation](https://portal.nutanix.com/page/documents/details?targetId=Nutanix-Era-User-Guide-v2_4:top-era-installation-c.html).
 2. A Kubernetes cluster.
 3. Helm installed.
-### Installation and Running on the cluster
-Deploy the controller on the cluster:
 
+## Installation and Running on the cluster
+Deploy the operator on the cluster:
 ```sh
 helm repo add helm-test-manav https://manavrajvanshi-nx.github.io/helm/
-```
-```sh
+
 helm install ndb-operator helm-test-manav/ndb-operator --version 0.0.1
 ```
-
-### Using the Operator
+## Using the Operator
 
 1. Create the secrets that are to be used by the custom resource:
 ```yaml
@@ -45,14 +42,11 @@ stringData:
   ssh_public_key: SSH-PUBLIC-KEY
 
 ```
-
 2. To create instances of custom resources (provision databases), edit the crd file with the NDB installation and database instance details and run:
-
 ```sh
 kubectl apply -f CRD_FILE.yaml
 ```
 3. To delete instances of custom resources (deprovision databases) run:
-
 ```sh
 kubectl delete -f CRD_FILE.yaml
 ```
@@ -93,8 +87,38 @@ spec:
     timezone: "UTC"
     type: postgres
 ```
+## Uninstalling the Chart
+To uninstall/delete the operator deployment/chart:
+```console
+helm uninstall [RELEASE_NAME]
+```
+---
+## Configuration
 
+The following table lists the configurable parameters of the NDB operator chart and their default values.
 
+| Parameter                   | Description                                                      | Default                                                          |
+|-----------------------------|------------------------------------------------------------------|------------------------------------------------------------------|
+| `replicaCount`              | Number of replicas of the NDB Operator controller pods           | `1`                                                              |
+| `image.repository`          | Image for NDB Operator controller                                | `ghcr.io/nutanix-cloud-native/ndb-operator/controller`           |
+| `image.pullPolicy`          | Image pullPolicy                                                 | `IfNotPresent`                                                   |
+| `image.tag`                 | Image tag                                                        | `v0.0.2, defaults to Chart.appVersion if removed`                |
+| `imagePullSecrets`          | ImagePullSecrets list                                            | `[]`                                                             |
+| `nameOverride`              | To override the name of the operator chart                       | `""`                                                             |
+| `fullnameOverride`          | To override the full name of the operator chart                  | `""`                                                             |
+| `serviceAccount.name`       | Name of the service account that will be used by the operator    | `ndb-operator-service-account`                                   |
+| `secretName`                | Name of the secret for Nutanix Cloud Provider credentials        | `nutanix-creds`                                                  |
+| `podAnnotations`            | Add annotation to NDB Operator controller pods                   | `kubectl.kubernetes.io/default-container: manager`               |
+| `podSecurityContext`        | Security context for the pod(s) running the operator             | `runAsNonRoot: true`                                             |
+| `securityContext`           | Security context for the container running the controller        | `allowPrivilegeEscalation: false`                                |
+| `resources`                 | Configure resources for Cloud Provider Pod                       | `refer to values.yaml`                                           |
+| `nodeSelector`              | Configure nodeSelector for Cloud Provider Pod                    | `refer to values.yaml`                                           |
+| `tolerations`               | Configure tolerations for Cloud Provider Pod                     | `refer to values.yaml`                                           |
+| `affinity`                  | Configure affinity for Cloud Provider Pod                        | `refer to values.yaml`                                           |
+
+Specify each parameter using the `--set key=value[,key=value]` argument to `helm install` or provide a file with `-f value.yaml`.
+
+---
 
 ## How it works
 
@@ -114,7 +138,7 @@ Pods can specify an initContainer to wait for the service (and hence the databas
 ```
 
 ## Contributing
-See the [contributing docs](CONTRIBUTING.md).
+See the [contributing docs](https://github.com/nutanix-cloud-native/ndb-operator/blob/main/CONTRIBUTING.md).
 
 ## Support
 ### Community Plus

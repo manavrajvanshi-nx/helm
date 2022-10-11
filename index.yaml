@@ -39,12 +39,12 @@ entries:
         - url: https://artifacthub.io/packages/helm/artifact-hub/artifact-hub
     apiVersion: v2
     appVersion: v0.0.2
-    created: "2022-10-10T23:31:13.058291-07:00"
+    created: "2022-10-11T10:50:30.816879-07:00"
     description: A Helm chart for Nutanix Database Kubernetes Operator
-    digest: ffe4b02f347e15069be982ed8060d25ac0d604ac1d360a6c6b3c11b801eba98d
+    digest: c12fe20fdba87fd24830aa3a6883cbe28c938197ba3d5cf6e571cfadf8bbd00e
     name: ndb-operator
     type: application
     urls:
     - ndb-operator-0.0.1.tgz
     version: 0.0.1
-generated: "2022-10-10T23:31:13.056352-07:00"
+generated: "2022-10-11T10:50:30.816011-07:00"
