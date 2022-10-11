@@ -64,6 +64,7 @@ annotations:
       email: manav.rajvanshi@nutanix.com 
   artifacthub.io/operator: "true"
   artifacthub.io/operatorCapabilities: Basic Install
+  #TODO: Remove prerelease or not, recommendations?
   artifacthub.io/prerelease: "true"
   artifacthub.io/recommendations: |
     - url: https://artifacthub.io/packages/helm/artifact-hub/artifact-hub
