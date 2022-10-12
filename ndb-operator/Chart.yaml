@@ -31,9 +31,7 @@ annotations:
   artifacthub.io/crds: |
     - kind: Database
       version: v1alpha1
-      name: Database
-      displayName: My Kind
-      description: Some nice description    
+      name: Database 
   artifacthub.io/crdsExamples: |
     - apiVersion: ndb.nutanix.com/v1alpha1
       kind: Database
@@ -62,6 +60,4 @@ annotations:
   artifacthub.io/operator: "true"
   artifacthub.io/operatorCapabilities: Basic Install
   #TODO: Remove prerelease or not, recommendations?
-  artifacthub.io/prerelease: "true"
-  artifacthub.io/recommendations: |
-    - url: https://artifacthub.io/packages/helm/artifact-hub/artifact-hub
+  artifacthub.io/prerelease: "false"

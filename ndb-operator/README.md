@@ -11,9 +11,9 @@ The NDB operator brings automated and simplified database administration, provis
 ## Installation and Running on the cluster
 Deploy the operator on the cluster:
 ```sh
-helm repo add helm-test-manav https://manavrajvanshi-nx.github.io/helm/
+helm repo add nutanix https://nutanix.github.io/helm/
 
-helm install ndb-operator helm-test-manav/ndb-operator --version 0.0.2
+helm install ndb-operator nutanix/ndb-operator --version 0.0.1
 ```
 ## Using the Operator
 
@@ -119,17 +119,22 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 
 ### Configuration examples:
 
-Install the operator in the `nutanix-operators` namespace:
+Install the operator in the `example-ns` namespace (add the `--create-namespace` flag if the namespace does not exist): 
 
 ```console
-helm install ndb-operator nutanix/ndb-operator -n nutanix-operators --set fullnameOverride=my-operator --set replicaCount=2 
+helm install ndb-operator nutanix/ndb-operator -n example-ns 
 ```
-In the above command  `fullnameOverride`, `replicaCount` refers to the variables defined in the values.yaml file. 
+
+Individual configurations can be set by using `--set key=value[,key=value]` like:
+```console
+helm install ndb-operator nutanix/ndb-operator  --set fullnameOverride=my-operator --set replicaCount=2 
+```
+In the above command  `fullnameOverride`, `replicaCount` refers to some of the variables defined in the values.yaml file. 
 
 All the options can also be specified in a value.yaml file:
 
 ```console
-helm install ndb-operator nutanix/ndb-operator -n nutanix-operators -f value.yaml
+helm install ndb-operator nutanix/ndb-operator -f value.yaml
 ```
 ---
 
