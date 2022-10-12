@@ -26,8 +26,6 @@ spec:
       serviceAccountName: {{ include "ndb-operator.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
-      # securityContext:
-      #   runAsNonRoot: true
       containers:
         - name: kube-rbac-proxy
           securityContext:
@@ -50,9 +48,6 @@ spec:
         - name: manager 
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          # securityContext:
-          #   ##
-          #   allowPrivilegeEscalation: false
           {{- with .Values.image }}
           image: {{ .repository }}:{{ .tag | default $.Chart.AppVersion }}
           imagePullPolicy: {{ .pullPolicy }}

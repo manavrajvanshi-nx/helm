@@ -12,7 +12,6 @@ fullnameOverride: ""
 
 serviceAccount:
   # Specifies whether a service account should be created
-  #TODO: Discuss create, annotations
   create: true
   # Annotations to add to the service account
   annotations: {}

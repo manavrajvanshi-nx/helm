@@ -25,8 +25,10 @@ appVersion: "v0.0.2"
 
 annotations:
   artifacthub.io/changes: |
+    - kind: added
+      description: "Helm chart for the NDB operator"
     - kind: security
-      description: "Updated Kube Proxy version"
+      description: "Updated kube-proxy version"
   artifacthub.io/containsSecurityUpdates: "true"  
   artifacthub.io/crds: |
     - kind: Database
@@ -55,9 +57,14 @@ annotations:
           type: postgres
   artifacthub.io/license: Apache-2.0   
   artifacthub.io/maintainers: |
+    - name: Balakumar Balu
+      email: balakumar.balu@nutanix.com
+    - name: Krunal Jhaveri
+      email: krunal.jhaveri@nutanix.com
     - name: Manav Rajvanshi
       email: manav.rajvanshi@nutanix.com 
+    - name: Nutanix Cloud Native Team
+      email: cloudnative@nutanix.com
   artifacthub.io/operator: "true"
   artifacthub.io/operatorCapabilities: Basic Install
-  #TODO: Remove prerelease or not, recommendations?
-  artifacthub.io/prerelease: "false"
+  artifacthub.io/prerelease: "true"

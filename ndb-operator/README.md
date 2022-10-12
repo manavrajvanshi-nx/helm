@@ -13,7 +13,7 @@ Deploy the operator on the cluster:
 ```sh
 helm repo add nutanix https://nutanix.github.io/helm/
 
-helm install ndb-operator nutanix/ndb-operator --version 0.0.1
+helm install ndb-operator nutanix/ndb-operator --version 0.0.2
 ```
 ## Using the Operator
 
@@ -119,10 +119,10 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 
 ### Configuration examples:
 
-Install the operator in the `example-ns` namespace (add the `--create-namespace` flag if the namespace does not exist): 
+Install the operator in the `ndb-operator-ns` namespace (add the `--create-namespace` flag if the namespace does not exist): 
 
 ```console
-helm install ndb-operator nutanix/ndb-operator -n example-ns 
+helm install ndb-operator nutanix/ndb-operator -n ndb-operator-ns 
 ```
 
 Individual configurations can be set by using `--set key=value[,key=value]` like:
