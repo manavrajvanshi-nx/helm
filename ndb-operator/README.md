@@ -13,7 +13,7 @@ Deploy the operator on the cluster:
 ```sh
 helm repo add helm-test-manav https://manavrajvanshi-nx.github.io/helm/
 
-helm install ndb-operator helm-test-manav/ndb-operator --version 0.0.1
+helm install ndb-operator helm-test-manav/ndb-operator --version 0.0.2
 ```
 ## Using the Operator
 

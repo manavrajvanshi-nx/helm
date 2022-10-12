@@ -2,6 +2,52 @@ apiVersion: v1
 entries:
   ndb-operator:
   - annotations:
+      artifacthub.io/changes: |
+        - kind: Updated
+          description: Kube Proxy
+      artifacthub.io/containsSecurityUpdates: "true"
+      artifacthub.io/crds: "- kind: Database\n  version: v1alpha1\n  name: Database\n
+        \ displayName: My Kind\n  description: Some nice description    \n"
+      artifacthub.io/crdsExamples: |
+        - apiVersion: ndb.nutanix.com/v1alpha1
+          kind: Database
+          metadata:
+            name: db
+          spec:
+            ndb:
+              clusterId: "Nutanix Cluster Id"
+              credentialSecret : ndb-secret-name
+              server: https://[NDB IP]:8443/era/v0.9
+              skipCertificateVerification: true
+            databaseInstance:
+              databaseInstanceName: "Database Instance Name"
+              databaseNames:
+                - database_one
+                - database_two
+                - database_three
+              credentialSecret: db-instance-secret-name
+              size: 10
+              timezone: "UTC"
+              type: postgres
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/maintainers: "- name: Manav Rajvanshi\n  email: manav.rajvanshi@nutanix.com
+        \n"
+      artifacthub.io/operator: "true"
+      artifacthub.io/operatorCapabilities: Basic Install
+      artifacthub.io/prerelease: "true"
+      artifacthub.io/recommendations: |
+        - url: https://artifacthub.io/packages/helm/artifact-hub/artifact-hub
+    apiVersion: v2
+    appVersion: v0.0.2
+    created: "2022-10-11T17:42:25.733754-07:00"
+    description: A Helm chart for Nutanix Database Kubernetes Operator
+    digest: 7ad68f20586ede294f3756e5829a91567e62bc93b7768c85c936839eff04caf8
+    name: ndb-operator
+    type: application
+    urls:
+    - ndb-operator-0.0.2.tgz
+    version: 0.0.2
+  - annotations:
       artifacthub.io/changes: "- kind: added\n  description: Helm Chart\n  links:\n
         \   - name: GitHub \n      url: https://github.com/nutanix-cloud-native/ndb-operator
         \  \n"
@@ -39,7 +85,7 @@ entries:
         - url: https://artifacthub.io/packages/helm/artifact-hub/artifact-hub
     apiVersion: v2
     appVersion: v0.0.2
-    created: "2022-10-11T16:54:11.329133-07:00"
+    created: "2022-10-11T17:42:25.73312-07:00"
     description: A Helm chart for Nutanix Database Kubernetes Operator
     digest: 031564935ebedd210c01d104dd46e61c456c16aeab71bf90381933881b05808f
     name: ndb-operator
@@ -47,4 +93,4 @@ entries:
     urls:
     - ndb-operator-0.0.1.tgz
     version: 0.0.1
-generated: "2022-10-11T16:54:11.328318-07:00"
+generated: "2022-10-11T17:42:25.731191-07:00"
